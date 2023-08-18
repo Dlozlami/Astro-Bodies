@@ -8,14 +8,12 @@
 }
 
 .panel {
+  border-radius: 30;
   padding: 20px;
   border: 1px solid #ccc;
   width: 400px;
-  text-align: center;
   background-color: rgba(255, 255, 255, 0.8); /* Adding some opacity to make the panel more readable */
 }
-
-
 .input-group {
   margin-bottom: 15px;
 }
@@ -24,4 +22,13 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+.buttonStyles {
+  background-color: #440844;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }

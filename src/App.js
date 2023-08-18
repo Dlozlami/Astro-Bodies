@@ -4,6 +4,8 @@ import "./App.css"; // You can define your CSS for styling here
 function App() {
   const [fullName, setFullName] = useState("");
   const [dob, setDOB] = useState("");
+  const [placeOfBirth, setPlaceOfBirth] = useState("");
+  const [biologicalSex, setBiologicalSex] = useState("Male");
 
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);
@@ -13,10 +15,25 @@ function App() {
     setDOB(event.target.value);
   };
 
+  const handlePlaceOfBirthChange = (event) => {
+    setPlaceOfBirth(event.target.value);
+  };
+
+  const handleBiologicalSexChange = (event) => {
+    setBiologicalSex(event.target.value);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
-    console.log("Form submitted:", fullName, dob);
+    console.log("Form submitted:", fullName, dob, placeOfBirth, biologicalSex);
+  };
+
+  const handleReset = () => {
+    setFullName("");
+    setDOB("");
+    setPlaceOfBirth("");
+    setBiologicalSex("Male");
   };
 
   return (
@@ -48,8 +65,40 @@ function App() {
             />
           </div>
 
-          <button type="submit" className="submit-button">
+          <div className="input-group">
+            <label htmlFor="placeOfBirth">Place of Birth</label>
+            <input
+              type="text"
+              id="placeOfBirth"
+              value={placeOfBirth}
+              onChange={handlePlaceOfBirthChange}
+              style={{ padding: "10px" }}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="biologicalSex">Biological Sex</label>
+            <select
+              id="biologicalSex"
+              value={biologicalSex}
+              onChange={handleBiologicalSexChange}
+              style={{ padding: "10px" }}
+            >
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Intersex">Intersex</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="buttonStyles"
+            style={{ marginRight: 20 }}
+          >
             Submit
+          </button>
+          <button type="button" className="buttonStyles" onClick={handleReset}>
+            Reset
           </button>
         </form>
       </div>
