@@ -1,0 +1,5 @@
+name: push to firebase
+
+on:
+  push:
+    
