@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '14'
 
       - name: Install npm dependencies
         run: npm install
@@ -27,9 +27,18 @@ jobs:
       - name: Build your web application
         run: npm run build
 
-      - name: Deploy to Firebase Hosting
+      - name: Deploy to Firebase Hosting (Main branch)
+        if: github.ref == 'refs/heads/main'
         run: |
-          # Deploy your application to Firebase Hosting
+          # Deploy your application to Firebase Hosting for the main branch
           firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
-        env: 
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy to Firebase Hosting (Dev branch)
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          # Deploy your application to Firebase Hosting for the dev branch
+          firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+        env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
