@@ -28,11 +28,17 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase Hosting (Main branch)
+        if: github.ref == 'refs/heads/main'
         run: |
           # Deploy your application to Firebase Hosting for the main branch
           firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
-      - name: Build a new channel devSec
-        run: firebase hosting:channel:deploy devSec
+      - name: Deploy to Firebase Hosting (Dev branch)
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          # Deploy your application to Firebase Hosting for the dev branch
+          firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
