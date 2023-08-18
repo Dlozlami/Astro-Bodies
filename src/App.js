@@ -40,7 +40,7 @@ function App() {
     <div className="app-container">
       <div className="panel">
         <h1>Welcome to AstroBodies!</h1>
-        <p>Lets start with your personal details to draw your chart.</p>
+        <p>Let's start with your personal details to draw your chart.</p>
 
         <form onSubmit={handleSubmit} className="form">
           <div className="input-group">
