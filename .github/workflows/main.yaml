@@ -33,3 +33,6 @@ jobs:
           firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Build a new channel devSec
+        run: firebase hosting:channel:deploy devSec
