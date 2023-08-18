@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="panel">
-        <h1>Welcome to AstroBodies! DEV</h1>
+        <h1>Welcome to AstroBodies! DEVs</h1>
         <p>Let's start with your personal details to draw your chart.</p>
 
         <form onSubmit={handleSubmit} className="form">
