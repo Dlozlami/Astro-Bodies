@@ -31,13 +31,13 @@ jobs:
         run: |
           # Determine the Firebase Hosting Channel based on the branch name
           if [ "${{ github.ref }}" = "refs/heads/main"]; then
-          firebase deploy --only hosting --token "$FIREBASE_TOKEN"
-          elif [ "${{ github.ref }}" = "refs/heads/prod"];
-          CHANNEL="prod"
+            firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+          elif [ "${{ github.ref }}" = "refs/heads/prod"]; then
+            CHANNEL="prod"
           else
-          # If the branch is not main or prod, exit without deploying
-          echo "Branch does not exist."
-          exit 0
+            # If the branch is not main or prod, exit without deploying
+            echo "Branch does not exist."
+            exit 0
           fi
           # Deploy your application to specified Hosting Chanel
           firebase hosting:channel:deploy "$CHANNEL" --token "$FIREBASE_TOKEN"
